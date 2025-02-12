@@ -1,12 +1,17 @@
-require 'rainbow'
+require_relative "lib/game"
+require_relative "lib/computer"
 
-def colorize(text, color)
-  puts Rainbow(text).send(color)
-end
+puts "1 - Computer Code\n2 - Player Code"
 
-while true
-  print "Write text with a color: "
-  input = gets.chomp.split(",")
+ans = gets.chomp.to_i
 
-  colorize(input[0], input[1].strip)
+if ans.eql?(1)
+  game = Game.new
+  puts game.inspect
+
+  6.times do
+    game.round
+  end
+else
+
 end

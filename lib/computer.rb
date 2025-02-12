@@ -1,4 +1,6 @@
 class Computer
+  attr_reader :code
+  
   def initialize
     @code = generate_code
   end

@@ -1,7 +1,6 @@
 class Game
   def initialize
     @computer = Computer.new
-    @code = @computer.generate_code
     @guess_attempts = 6
 
     @correct = 8226.chr('utf-8')
@@ -18,10 +17,30 @@ class Game
   def round
     player_guess = get_guess
 
-    if player_guess.eql?(@code)
+    if player_guess.eql?(@computer.code)
       puts "You win!"
+      return
     else
-      puts "You lost!"
+      clue = calc(player_guess)
+      puts clue.join
     end
+  end
+
+  def calc(guess)
+    clue = []
+    guess_chars = guess.chars
+    code_chars = @computer.code.chars
+
+    guess_chars.each_with_index do |ch, idx|
+      if ch.eql?(code_chars[idx])
+        clue << @correct
+      elsif code_chars.include?(ch)
+        clue << @almost
+      else
+        clue << "-"
+      end
+    end
+
+    return clue
   end
 end

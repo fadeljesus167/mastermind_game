@@ -15,4 +15,11 @@ class Computer
 
     return code
   end
+
+  def get_guess
+    # search a strategy to implement
+    code = "brgymw".chars.sample + "brgymw".chars.sample + "brgymw".chars.sample + "brgymw".chars.sample
+
+    return code
+  end
 end

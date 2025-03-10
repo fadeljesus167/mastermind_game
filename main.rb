@@ -10,8 +10,16 @@ if ans.eql?(1)
   puts game.inspect
 
   6.times do
-    game.round
+    result = game.round
+    break if result.eql?(true)
   end
 else
+  game = Game.new
+  puts "Enter code: "
+  code = gets.chomp
 
+  6.times do
+    result = game.computer_round(code)
+    break if result.eql?(true)
+  end
 end
